@@ -1,0 +1,6 @@
+---
+# tasks file for xfce-conf
+  - import_tasks: clipman.yml
+  - import_tasks: terminal.yml
+  - import_tasks: system.yml
+  
