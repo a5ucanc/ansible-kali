@@ -13,7 +13,8 @@ sudo apt update -y; sudo apt upgrade -y
 # Install Ansible
 pip install ansible 
 ```
-    
+
+
 ## Usage
 
 Simply run the command and supply the root password
@@ -22,10 +23,18 @@ cd ansible-kali
 ansible-playbook -K main.yml
 ```
 
+
 ## Features
 
-- Install Alacritty and configure as default terminal
-- Shorten Grub menu waiting time to 1 second
+### System
+
 - Make defaul user autologin on start
-- Overwrite tmux and vim configurations
+- Shorten Grub menu waiting time to 1 second
 - Configure Clipman to autostart, popup at pointer and Super+v keyboard shortcut
+- Install Alacritty and configure as default terminal
+
+
+### Tools
+
+- Overwrite tmux and vim configurations
+- Fix remote path completion of evil-winrm

@@ -1,23 +1,22 @@
 ---
-  - name: 'Lightdm {{ ansible_env.USER }} autologin'
-    replace:
-      path: /etc/lightdm/lightdm.conf
-      regexp: '^#{{ item.key }}=.*$'
-      replace: '{{ item.key }}={{ item.value }}'
-    with_dict: '{{ lightdm_entries }}'
-    become: true
+  - name: 'System settings'
+    block:
+    - name: 'Lightdm {{ ansible_env.USER }} autologin'
+      replace:
+        path: /etc/lightdm/lightdm.conf
+        regexp: '^#{{ item.key }}=.*$'
+        replace: '{{ item.key }}={{ item.value }}'
+      with_dict: '{{ lightdm_entries }}'
 
-  - name: 'Grub short timeout'
-    lineinfile:
-      path: /etc/default/grub
-      regexp: '^GRUB_TIMEOUT=.*'
-      line: 'GRUB_TIMEOUT=1'
-    become: true
+    - name: 'Grub short timeout'
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^GRUB_TIMEOUT=.*'
+        line: 'GRUB_TIMEOUT=1'
 
-  - name: 'Update Grub'
-    shell: update-grub
-    become: true
+    - name: 'Update Grub'
+      shell: update-grub
 
-  - name: 'Update plocate.db'
-    shell: updatedb
+    - name: 'Update plocate.db'
+      shell: updatedb
     become: true

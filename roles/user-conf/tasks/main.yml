@@ -1,6 +1,5 @@
 ---
 # tasks file for user-conf
-  - name: 'Copy user configurations to {{ ansible_env.HOME }}/'
-    copy:
-      src: 'files/'
-      dest: '{{ ansible_env.HOME }}/'
+  - import_tasks: dotfiles.yml
+  - import_tasks: tools.yml
+

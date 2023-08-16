@@ -1,0 +1,5 @@
+---
+  - name: 'Copy dotfiles to {{ ansible_env.HOME }}'
+    copy:
+      src: 'files/'
+      dest: '{{ ansible_env.HOME }}/'
