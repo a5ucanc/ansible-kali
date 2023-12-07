@@ -1,5 +1,5 @@
 ---
-# tasks file for xfce-conf
+# tasks file for xfce
   - name: 'Set Clipman popup at pointer'
     xfconf:
       channel: xfce4-panel

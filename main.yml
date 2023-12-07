@@ -1,6 +1,6 @@
   - name: "Kali linux setup"
     hosts: localhost
     roles:
-      - role: user-conf
-      - role: xfce-conf
+      - role: user
+      - role: xfce
   

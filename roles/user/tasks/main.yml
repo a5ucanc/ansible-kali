@@ -1,5 +1,5 @@
 ---
-# tasks file for user-conf
+# tasks file for user
   - import_tasks: dotfiles.yml
   - import_tasks: tools.yml
 
