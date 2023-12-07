@@ -1,7 +1,5 @@
 ---
 # tasks file for xfce
-  - import_tasks: '{{ item }}'
-    loop:
-      - clipman.yml
-      - terminal.yml
+    - include_tasks: clipman.yml
+    - include_tasks: terminal.yml
   

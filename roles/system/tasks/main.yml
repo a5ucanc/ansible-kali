@@ -1,8 +1,5 @@
 ---
 # tasks file for system
-  - import_tasks: '{{ item }}'
-    loop:
-      - autologin.yml
-      - grub.yml
-      - update.yml
-    become: true
+    - include_tasks: update.yml
+    - include_tasks: grub.yml
+    - include_tasks: autologin.yml

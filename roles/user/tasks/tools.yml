@@ -4,9 +4,6 @@
       - name: 'Check ruby version'
         shell: "ruby --version | awk '{print $2}' | sed 's/p.*$//'"
         register: ruby_version
-
-      - debug:
-          var: ruby_version.stdout
         
       - name: 'Install dependencies'
         package:
