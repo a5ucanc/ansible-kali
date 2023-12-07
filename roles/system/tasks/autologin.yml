@@ -1,0 +1,6 @@
+    - name: 'Lightdm {{ ansible_env.USER }} autologin'
+      replace:
+        path: /etc/lightdm/lightdm.conf
+        regexp: '^#{{ item.key }}=.*$'
+        replace: '{{ item.key }}={{ item.value }}'
+      with_dict: '{{ lightdm_entries }}'
