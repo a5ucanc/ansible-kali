@@ -1,5 +1,11 @@
 ---
 # tasks file for system
+    - name: Check virtualization program
+      command: systemd-detect-virt
+      register: virt
+    
     - include_tasks: update.yml
     - include_tasks: grub.yml
+    # do not autologin user on hyper-v as it messes up the enhanced session
     - include_tasks: autologin.yml
+      when: virt.stdout != 'microsoft'

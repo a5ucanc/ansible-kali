@@ -41,5 +41,5 @@ ansible-playbook -K main.yml
 
 # Todo
 - [ ] Create new user if needed
-- [ ] Reboot the system after finishing
+- [X] Reboot the system if needed
 - [X] Update and upgrade the system
