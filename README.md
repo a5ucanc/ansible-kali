@@ -38,8 +38,3 @@ ansible-playbook -K main.yml
 
 - Overwrite tmux and vim configurations
 - Fix remote path completion of evil-winrm
-
-# Todo
-- [ ] Create new user if needed
-- [X] Reboot the system if needed
-- [X] Update and upgrade the system

@@ -1,2 +1,5 @@
 ---
 # vars file for system
+lightdm_entries:
+  autologin-user: '{{ ansible_env.USER }}'
+  autologin-user-timeout: 0

@@ -1,4 +1,4 @@
-    - name: 'Lightdm {{ ansible_env.USER }} autologin'
+    - name: 'Configure user autologin'
       replace:
         path: /etc/lightdm/lightdm.conf
         regexp: '^#{{ item.key }}=.*$'
