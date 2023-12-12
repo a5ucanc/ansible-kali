@@ -7,11 +7,14 @@ Bootup Kali with Ansible
 ## Installation
 
 ```shell
-# Make sure system is up to date
-sudo apt update -y; sudo apt upgrade -y
+# Make sure system cache is up to date
+sudo apt update -y
 
 # Install Ansible
-pip install ansible 
+sudo apt install ansible
+
+# Clone this repo
+git clone https://github.com/a5ucanc/ansible-kali
 ```
 
 
@@ -28,7 +31,7 @@ ansible-playbook -K main.yml
 
 ### System
 
-- Make defaul user autologin on start
+- Make current user autologin on start
 - Shorten Grub menu waiting time to 1 second
 - Configure Clipman to autostart, popup at pointer and Super+v keyboard shortcut
 - Install Alacritty and configure as default terminal
