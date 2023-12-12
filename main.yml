@@ -4,5 +4,4 @@
       - role: system
         become: true
       - role: xfce
-        become: true
       - role: user
