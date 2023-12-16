@@ -14,5 +14,5 @@
       value: xfce4-popup-clipman
   - name: 'Autostart Clipman'
     copy:
-      src: xfce4-clipman-plugin-autostart.desktop
+      src: files/xfce4-clipman-plugin-autostart.desktop
       dest: '{{ ansible_env.HOME }}/.config/autostart/'

@@ -1,11 +1,5 @@
 ---
-  - name: 'Install Alacritty'
-    package:
-      name: alacritty
-      state: present
-    become: true
-
   - name: 'Set Alacritty as default terminal'
     copy:
-      src: helpers.rc
+      src: files/helpers.rc
       dest: '{{ ansible_env.HOME }}/.config/xfce4/'

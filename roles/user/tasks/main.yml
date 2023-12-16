@@ -1,5 +1,6 @@
 ---
 # tasks file for user
-  - import_tasks: dotfiles.yml
-  - import_tasks: tools.yml
+  - import_tasks: evil_winrm_ruby_fix.yml
+  - import_tasks: home.yml
+  - import_tasks: download_tools.yml
 

@@ -1,7 +1,8 @@
   - name: "Kali linux setup"
-    hosts: localhost
+    hosts: all
     roles:
       - role: system
         become: true
       - role: xfce
       - role: user
+          

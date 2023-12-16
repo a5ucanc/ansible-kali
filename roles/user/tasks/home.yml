@@ -1,0 +1,15 @@
+---
+  - name: 'Copy files to {{ ansible_env.HOME }}/'
+    copy:
+      src: 'files/home/'
+      dest: '{{ ansible_env.HOME }}/'
+      mode: 0755
+
+  - name: 'Add folders to PATH'
+    lineinfile:
+      path: "{{ ansible_env.HOME }}/.zshrc"
+      line: 'export PATH=$PATH:$HOME/{{ item }}'
+      create: yes
+    loop: "{{ path_dirs }}"
+    
+    

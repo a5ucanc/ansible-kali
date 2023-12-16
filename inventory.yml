@@ -1,0 +1,25 @@
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+  vars:
+    packages:
+      - alacritty
+    repos:
+      - GhostPack/Certify
+      - ticarpi/jwt_tool
+      - Hex27/mongomap
+      - Greenwolf/ntlm_theft
+      - AlmondOffSec/PassTheCert
+      - urbanadventurer/username-anarchy
+      - vi/websocat
+    releases:
+      - jpillora/chisel
+      - carlospolop/PEASS-ng
+      - ropnop/kerbrute
+      - elddy/NimScan
+      - DominicBreuker/pspy
+      - ropnop/windapsearch
+    path_dirs:
+      - .local/bin
+      - executables

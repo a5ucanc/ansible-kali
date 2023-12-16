@@ -1,10 +1,31 @@
-    - name: Update system cache
-      apt: 
+    - name: Updating system cache
+      ansible.builtin.apt: 
         update_cache: yes
+      async: 1200
+      poll: 5
+    
       
-    - name: Upgrade system
-      apt: 
-        upgrade: dist
+    - name: Installing additional packages
+      ansible.builtin.apt:
+        name: '{{ packages }}'
+        state: present
+      async: 1200
+      poll: 5
 
-    - name: 'Update plocate.db'
+    - name: Upgrading system
+      ansible.builtin.apt:
+        upgrade: dist
+      async: 3600
+      poll: 0
+
+    - name: Clean and autoremove
+      ansible.builtin.apt:
+        autoclean: yes
+        autoremove: yes
+      async: 1200
+      poll: 0
+
+    - name: Update plocate.db
       shell: updatedb
+      async: 1200
+      poll: 0
