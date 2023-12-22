@@ -3,8 +3,9 @@ all:
     localhost:
       ansible_connection: local
   vars:
-    packages:
+    apt_packages:
       - alacritty
+    pip_packages:
     repos:
       - GhostPack/Certify
       - ticarpi/jwt_tool
@@ -19,7 +20,5 @@ all:
       - ropnop/kerbrute
       - elddy/NimScan
       - DominicBreuker/pspy
-      - ropnop/windapsearch
     path_dirs:
       - .local/bin
-      - executables

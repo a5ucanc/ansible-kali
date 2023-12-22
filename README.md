@@ -27,7 +27,8 @@ ansible-playbook -i inventory.yml -K main.yml
 Edit the ```inventory.yml``` to configure the process. 
 
 * ```hosts``` - Remote and local hosts.
-* ```packages``` - Additional packages to install
+* ```packages``` - Additional packages to install.
+* ```pips``` - Pip packages to install.
 * ```repos``` - Whole repositories that will be downloaded to ```~/repos```.
 * ```releases``` - Repository releases to choose from that will be downloaded to ```~/executables```.
 * ```path_dirs``` - Directories to add to the PATH environment variable.
@@ -47,3 +48,4 @@ Edit the ```inventory.yml``` to configure the process.
 ### Tools
 - Download github repos to ```~/repos``` and releases to ```~/executables```
 - Fix remote path completion of evil-winrm
+- Burpsuite pro, jython and jruby downloaded to ```/opt/burpsuite```

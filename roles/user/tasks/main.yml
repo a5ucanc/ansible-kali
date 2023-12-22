@@ -1,6 +1,9 @@
 ---
 # tasks file for user
-  - import_tasks: evil_winrm_ruby_fix.yml
-  - import_tasks: home.yml
-  - import_tasks: download_tools.yml
+- import_tasks: pip.yml
+- import_tasks: burpsuite.yml
+  become: true
+- import_tasks: evil_winrm_ruby_fix.yml
+- import_tasks: home.yml
+- import_tasks: download_tools.yml
 

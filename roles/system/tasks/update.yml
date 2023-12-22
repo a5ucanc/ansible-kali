@@ -4,19 +4,19 @@
       async: 1200
       poll: 5
     
-      
     - name: Installing additional packages
       ansible.builtin.apt:
-        name: '{{ packages }}'
+        name: '{{ apt_packages }}'
         state: present
       async: 1200
       poll: 5
+      when: apt_packages is defined
 
-    - name: Upgrading system
-      ansible.builtin.apt:
-        upgrade: dist
-      async: 3600
-      poll: 0
+    # - name: Upgrading system
+    #   ansible.builtin.apt:
+    #     upgrade: dist
+    #   async: 3600
+    #   poll: 30
 
     - name: Clean and autoremove
       ansible.builtin.apt:

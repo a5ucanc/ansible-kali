@@ -26,7 +26,7 @@
 
     - set_fact:
         dir:
-          path: "{{ ansible_env.HOME }}/executables"
+          path: "{{ ansible_env.HOME }}/.local/bin"
       # when: index_list|length == 1
 
     - get_url:                                                           
