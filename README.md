@@ -49,3 +49,7 @@ Edit the ```inventory.yml``` to configure the process.
 - Download github repos to ```~/repos``` and releases to ```~/executables```
 - Fix remote path completion of evil-winrm
 - Burpsuite pro, jython and jruby downloaded to ```/opt/burpsuite```
+
+# Todo
+- [ ] Support for other DE
+- [ ] Choose different default terminal

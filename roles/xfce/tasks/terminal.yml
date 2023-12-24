@@ -1,5 +1,0 @@
----
-  - name: 'Set Alacritty as default terminal'
-    copy:
-      src: files/helpers.rc
-      dest: '{{ ansible_env.HOME }}/.config/xfce4/'

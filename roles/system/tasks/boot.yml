@@ -1,0 +1,19 @@
+- name: System | Boot | Grub
+  block:
+    - name: System | Boot | Grub | Set Timeout
+      ansible.builtin.lineinfile:
+        path: /etc/default/grub
+        regexp: '^GRUB_TIMEOUT=.*'
+        line: 'GRUB_TIMEOUT=1'
+
+    - name: System | Boot | Grub | Update Grub
+      shell: update-grub
+
+# do not autologin user on hyper-v as it messes up the enhanced session
+- name: System | Boot | Autologin | Configure Autologin
+  replace:
+    path: /etc/lightdm/lightdm.conf
+    regexp: '^#{{ item.key }}=.*$'
+    replace: '{{ item.key }}={{ item.value }}'
+  with_dict: '{{ lightdm_entries }}'
+  when: ansible_facts.virtualization_type != 'VirtualPC'

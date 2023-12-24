@@ -1,8 +1,0 @@
-    - name: 'Grub short timeout'
-      lineinfile:
-        path: /etc/default/grub
-        regexp: '^GRUB_TIMEOUT=.*'
-        line: 'GRUB_TIMEOUT=1'
-
-    - name: 'Update Grub'
-      shell: update-grub

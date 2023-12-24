@@ -1,18 +1,20 @@
----
-# tasks file for xfce
-  - name: 'Set Clipman popup at pointer'
-    xfconf:
-      channel: xfce4-panel
-      property: /plugins/clipman/tweaks/popup-at-pointer
-      value_type: bool
-      value: true
-  - name: 'Create keyboard shorcut for Clipman'
-    xfconf:
-      channel: xfce4-keyboard-shortcuts
-      property: /commands/custom/<Super>v
-      value_type: string
-      value: xfce4-popup-clipman
-  - name: 'Autostart Clipman'
-    copy:
-      src: files/xfce4-clipman-plugin-autostart.desktop
-      dest: '{{ ansible_env.HOME }}/.config/autostart/'
+- name: Xfce | Clipman | Configure
+  block:
+    - name: Xfce | Clipman | Configure | Popup at pointer
+      xfconf:
+        channel: xfce4-panel
+        property: /plugins/clipman/tweaks/popup-at-pointer
+        value_type: bool
+        value: true
+    
+    - name: Xfce | Clipman | Configure | Keyboard shortcut
+      xfconf:
+        channel: xfce4-keyboard-shortcuts
+        property: /commands/custom/<Super>v
+        value_type: string
+        value: xfce4-popup-clipman
+    
+    - name: Xfce | Clipman | Configure | Autostart
+      copy:
+        src: files/xfce4-clipman-plugin-autostart.desktop
+        dest: '{{ ansible_env.HOME }}/.config/autostart/'

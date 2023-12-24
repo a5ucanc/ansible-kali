@@ -1,0 +1,17 @@
+- name: Xfce | Alacritty | Install Packages
+  ansible.builtin.apt:
+    name: alacritty
+    state: present
+  become: true
+    
+- name: Xfce | Alacritty | Configure
+  block:
+    - name: Xfce | Alacritty | Configure | Default Terminal
+      copy:
+        src: files/helpers.rc
+        dest: '{{ ansible_env.HOME }}/.config/xfce4/'
+    
+    - name: Xfce | Alacritty | Configure | Copy Config File
+      copy:
+        src: files/alacritty.yml
+        dest: '{{ ansible_env.HOME }}/.config/alacritty/'

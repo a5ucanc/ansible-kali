@@ -4,7 +4,6 @@ all:
       ansible_connection: local
   vars:
     apt_packages:
-      - alacritty
     pip_packages:
     repos:
       - GhostPack/Certify

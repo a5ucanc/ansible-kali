@@ -1,5 +1,7 @@
 ---
 # tasks file for xfce
-    - include_tasks: clipman.yml
-    - include_tasks: terminal.yml
+- name: Xfce | Import Tasks | Clipman
+  include_tasks: clipman.yml
+- name: Xfce | Import Tasks | Alacritty
+  include_tasks: alacritty.yml
   

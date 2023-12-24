@@ -1,8 +1,18 @@
-  - name: "Kali linux setup"
-    hosts: all
-    roles:
-      - role: system
-        become: true
-      - role: xfce
-      - role: user
+- name: "Kali linux setup"
+  hosts: all
+  roles:
+    - role: system
+      become: true
+    - role: xfce
+      when: ansible_facts.env.XDG_CURRENT_DESKTOP == "XFCE"
+    - role: user
           
+  tasks:
+  - name: System | Apt | Upgrade Packages
+    ansible.builtin.apt:
+      upgrade: safe
+
+  - name: System | Apt | Autoclean and Autoremove
+    ansible.builtin.apt:
+      autoclean: yes
+      autoremove: yes

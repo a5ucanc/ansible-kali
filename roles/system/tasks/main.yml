@@ -1,14 +1,8 @@
 ---
 # tasks file for system
-    - name: Check virtualization program
-      command: systemd-detect-virt
-      register: virt
-    - name: Detected virtualization program
-      debug:
-        msg: '{{ virt.stdout }}'
-
-    - include_tasks: update.yml
-    - include_tasks: grub.yml
-# do not autologin user on hyper-v as it messes up the enhanced session
-    - include_tasks: autologin.yml
-      when: virt.stdout != 'microsoft'
+- name: System | Import Tasks | Apt
+  include_tasks: apt.yml
+- name: System | Import Tasks | Boot
+  include_tasks: boot.yml
+- name: System | Import Tasks | Configure
+  include_tasks: configure.yml

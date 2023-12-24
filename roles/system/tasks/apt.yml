@@ -1,0 +1,10 @@
+- name: System | Apt | Update Cache
+  ansible.builtin.apt: 
+    update_cache: yes
+
+- name: System | Apt | Install Packages
+  ansible.builtin.apt:
+    name: '{{ apt_packages }}'
+    state: present
+  when: apt_packages is defined
+
