@@ -8,6 +8,7 @@ Automate configuration and customization of stock Kali image with Ansible
 
 Clone this repository and install ansible.
 ```shell
+sudo apt update
 sudo apt install ansible 
 ```
 
@@ -29,8 +30,8 @@ Edit the ```inventory.yml``` to configure the process.
 * ```hosts``` - Remote and local hosts.
 * ```packages``` - Additional packages to install.
 * ```pips``` - Pip packages to install.
-* ```repos``` - Whole repositories that will be downloaded to ```~/repos```.
-* ```releases``` - Repository releases to choose from that will be downloaded to ```~/executables```.
+* ```repos``` - Whole repositories that will be downloaded to ```/opt/repos```.
+* ```releases``` - Repository releases to choose from that will be downloaded to ```~/.local/bin```.
 * ```path_dirs``` - Directories to add to the PATH environment variable.
 
 ## Features
@@ -46,7 +47,7 @@ Edit the ```inventory.yml``` to configure the process.
 
 
 ### Tools
-- Download github repos to ```~/repos``` and releases to ```~/executables```
+- Download github repos to ```/opt/repos``` and releases to ```~/.local/bin```
 - Fix remote path completion of evil-winrm
 - Burpsuite pro, jython and jruby downloaded to ```/opt/burpsuite```
 

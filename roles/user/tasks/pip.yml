@@ -1,4 +1,4 @@
-- name: User | Pip | Install Pip Packages
+- name: Pip | Install Pip Packages
   pip:
     name: "{{ pip_packages }}"
   when: pip_packages is defined

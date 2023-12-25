@@ -1,8 +1,8 @@
-- name: System | Apt | Update Cache
+- name: Apt | Update Cache
   ansible.builtin.apt: 
     update_cache: yes
 
-- name: System | Apt | Install Packages
+- name: Apt | Install Packages
   ansible.builtin.apt:
     name: '{{ apt_packages }}'
     state: present

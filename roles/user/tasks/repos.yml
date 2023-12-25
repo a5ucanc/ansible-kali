@@ -1,5 +1,0 @@
-- name: User | Repos | Download
-  loop: "{{ repos }}"
-  git:
-    repo: 'https://github.com/{{ item }}'
-    dest: '{{ ansible_env.HOME }}/repos/{{ item.split("/")[1] }}'

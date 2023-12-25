@@ -1,0 +1,17 @@
+---
+# tasks file for tools
+- name: Tools | Import Tasks | Configure
+  import_tasks: configure.yml
+  
+- name: Tools | Import Tasks | Releases
+  include_tasks: releases.yml
+  loop: "{{ releases }}"
+  when: releases is defined
+
+- name: Tools | Import Tasks | Repos
+  import_tasks: repos.yml
+  
+- name: Tools | Import Tasks | Burpsuite
+  import_tasks: burpsuite.yml
+  become: true
+

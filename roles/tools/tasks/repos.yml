@@ -1,0 +1,7 @@
+- name: Repos | Download
+  loop: "{{ repos }}"
+  git:
+    repo: 'https://github.com/{{ item }}'
+    dest: '{{ repos_dir }}/{{ item }}'
+  become: true
+  when: repos is defined

@@ -5,18 +5,3 @@
 
 - name: User | Import Tasks | Home
   import_tasks: home.yml
-
-- name: User | Import Tasks | Burpsuite
-  import_tasks: burpsuite.yml
-  become: true
-
-- name: User | Import Tasks | Evil-WinRM
-  import_tasks: evil_winrm.yml
-  become: true
-
-- name: User | Import Tasks | Repos
-  import_tasks: repos.yml
-
-- name: User | Import Tasks | Releases
-  include_tasks: releases.yml
-  loop: "{{ releases }}"

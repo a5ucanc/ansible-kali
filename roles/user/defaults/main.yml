@@ -1,12 +1,2 @@
 ---
 # defaults file for user
-burpsuite_extras_jars:
-  jruby:
-    jar: jruby-complete.jar
-    url: https://repo1.maven.org/maven2/org/jruby/jruby-complete/9.4.0.0/jruby-complete-9.4.0.0.jar
-  jython:
-    jar: jython-standalone.jar
-    url: https://repo1.maven.org/maven2/org/python/jython-standalone/2.7.3/jython-standalone-2.7.3.jar
-  ysoserial:
-    jar: ysoserial-all.jar
-    url: https://github.com/frohoff/ysoserial/releases/latest/download/ysoserial-all.jar

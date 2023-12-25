@@ -1,6 +1,6 @@
-- name: User | Releases | {{ item }}
+- name: Releases | {{ item }}
   block:
-    - name: User | Releases | {{ item }} | Fetch Latest Release
+    - name: Releases | {{ item }} | Fetch Latest Release
       uri:
         url: "https://api.github.com/repos/{{ item }}/releases/latest"
         return_content: true
@@ -17,13 +17,11 @@
 
     - set_fact:
         index_list: "{{ out.user_input.split(',')|difference([''])|map('int')|list|sort }}"
-        dir:
-          path: "{{ ansible_env.HOME }}/.local/bin"
 
-    - name: User | Releases | {{ item }} | Download
+    - name: Releases | {{ item }} | Download
       get_url:
         url: "{{ json_reponse.json.assets[selection| int -1].browser_download_url }}"
-        dest: "{{ dir.path }}/{{ json_reponse.json.assets[selection| int -1].name }}"
+        dest: "{{ releases_dir }}/{{ json_reponse.json.assets[selection| int -1].name }}"
         mode: 0755
       loop: "{{ index_list }}"
       loop_control:
@@ -31,8 +29,8 @@
       when: index_list|length > 0
       ignore_errors: true
 
-    - name: User | Releases | {{ item }} | Extract And Delete Download
-      ansible.builtin.script: "files/extract.py {{ dir.path }}/{{ json_reponse.json.assets[selection| int -1].name }} {{ dir.path }}"
+    - name: Releases | {{ item }} | Extract And Delete Download
+      ansible.builtin.script: "files/extract.py {{ releases_dir }}/{{ json_reponse.json.assets[selection| int -1].name }} {{ releases_dir }}"
       args:
         executable: "/usr/bin/python3"
       loop: "{{ index_list }}"

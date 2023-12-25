@@ -1,0 +1,11 @@
+- name: Configure | Create Repos Directory
+  file:
+    path: "{{ repos_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Configure | Create Releases Directory
+  file:
+    path: "{{ releases_dir }}"
+    state: directory
+    mode: 0755

@@ -1,2 +1,2 @@
-- name: System | Configure | Update locate database
+- name: Configure | Update locate database
   shell: updatedb

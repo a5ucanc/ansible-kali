@@ -4,6 +4,7 @@ all:
       ansible_connection: local
   vars:
     apt_packages:
+      - bloodhound
     pip_packages:
     repos:
       - GhostPack/Certify

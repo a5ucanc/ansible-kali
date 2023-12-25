@@ -1,0 +1,42 @@
+---
+- name: Ruby | Check Ruby Version
+  shell: "ruby --version | awk '{print $2}' | sed 's/p.*$//'"
+  register: ruby_version
+  
+- name: Ruby | Install Dependencies
+  package:
+    name: libreadline-dev
+    state: present
+
+- name: Ruby | Create Temp Directory
+  tempfile:
+    state: directory
+  register: tempdir
+
+- name: Ruby | Download
+  get_url:
+    url: 'https://ftp.ruby-lang.org/pub/ruby/{{ ruby_version.stdout | regex_search("^[0-9]+\.[0-9]+") }}/ruby-{{ ruby_version.stdout }}.tar.gz'
+    dest: '{{ tempdir.path }}/'
+
+- name: Ruby | Extract
+  unarchive:
+    src: '{{ tempdir.path }}/ruby-{{ ruby_version.stdout }}.tar.gz'
+    dest: '{{ tempdir.path }}/'
+    remote_src: yes
+  register: unpacked_dir
+
+- name: Ruby | Compile
+  shell: 'cd {{ tempdir.path }}/ruby-{{ ruby_version.stdout }}/ext/readline; ruby ./extconf.rb; make'
+
+- name: Ruby | Backup readline.so
+  copy:
+    src: '/usr/lib/x86_64-linux-gnu/ruby/{{ ruby_version.stdout | regex_search("^[0-9]+\.[0-9]+") }}.0/readline.so'
+    dest: '/usr/lib/x86_64-linux-gnu/ruby/{{ ruby_version.stdout | regex_search("^[0-9]+\.[0-9]+") }}.0/readline.so.bak'
+
+- name: Ruby | Overwrite readline.so
+  copy:
+    src: '{{ tempdir.path }}/ruby-{{ ruby_version.stdout }}/ext/readline/readline.so'
+    dest: '/usr/lib/x86_64-linux-gnu/ruby/{{ ruby_version.stdout | regex_search("^[0-9]+\.[0-9]+") }}.0/readline.so'
+    remote_src: true
+
+    
