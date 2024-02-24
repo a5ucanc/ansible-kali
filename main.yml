@@ -19,3 +19,7 @@
             autoclean: yes
             autoremove: yes
       become: true
+
+      rescue:
+        - debug:
+            msg: "Apt upgrade failed"
