@@ -2,6 +2,6 @@
   loop: "{{ repos }}"
   git:
     repo: 'https://github.com/{{ item }}'
-    dest: '{{ repos_dir }}/{{ item }}'
+    dest: '{{ repos_dir }}/{{ item.split("/")[1] }}'
   become: true
   when: repos is defined

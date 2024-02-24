@@ -1,17 +1,40 @@
 ---
 # tasks file for tools
-- name: Tools | Import Tasks | Configure
-  import_tasks: configure.yml
+- name: Tools | Create Releases Directory
+  file:
+    path: "{{ releases_dir }}"
+    state: directory
+    mode: 0755
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+  become: true
   
 - name: Tools | Import Tasks | Releases
   include_tasks: releases.yml
   loop: "{{ releases }}"
   when: releases is defined
 
+- name: Tools | Create Repos Directory
+  file:
+    path: "{{ repos_dir }}"
+    state: directory
+    mode: 0755
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+  become: true
+
 - name: Tools | Import Tasks | Repos
   import_tasks: repos.yml
   
+- name: Burpsuite | Create Directory
+  ansible.builtin.file:
+    path: "{{ burpsuite_folder }}"
+    state: directory
+    mode: 0755
+    owner: "{{ ansible_env.USER  }}"
+    group: "{{ ansible_env.USER }}"
+  become: true
+
 - name: Tools | Import Tasks | Burpsuite
   import_tasks: burpsuite.yml
-  become: true
 

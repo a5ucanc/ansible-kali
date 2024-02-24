@@ -2,6 +2,7 @@
 # defaults file for tools
 repos_dir: /opt/repos
 releases_dir: '{{ ansible_env.HOME }}/.local/bin'
+burpsuite_folder: /opt/burpsuite
 burpsuite_extras_jars:
   jruby:
     jar: jruby-complete.jar

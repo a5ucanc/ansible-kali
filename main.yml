@@ -5,7 +5,7 @@
     - role: system
       become: true
     - role: xfce
-      when: ansible_facts.env.XDG_CURRENT_DESKTOP == "XFCE"
+      when: ansible_env.XDG_CURRENT_DESKTOP == "XFCE"
     - role: user
           
   tasks:

@@ -2,12 +2,6 @@
   ansible.builtin.set_fact:
     burpsuite_edition: pro
     burpsuite_channel: Stable
-    burpsuite_folder: /opt/burpsuite
-
-- name: Burpsuite | Create Directory
-  ansible.builtin.file:
-    path: "{{ burpsuite_folder }}"
-    state: directory
 
 - name: Burpsuite | Fetch Download URL
   block:
