@@ -8,11 +8,10 @@
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
   become: true
-  
+
 - name: Tools | Import Tasks | Releases
   include_tasks: releases.yml
-  loop: "{{ releases }}"
-  when: releases is defined
+  loop: "{{ releases | default([], true)}}"
 
 - name: Tools | Create Repos Directory
   file:
@@ -25,7 +24,7 @@
 
 - name: Tools | Import Tasks | Repos
   import_tasks: repos.yml
-  
+
 - name: Burpsuite | Create Directory
   ansible.builtin.file:
     path: "{{ burpsuite_folder }}"
@@ -37,4 +36,3 @@
 
 - name: Tools | Import Tasks | Burpsuite
   import_tasks: burpsuite.yml
-
