@@ -5,9 +5,11 @@
         path: /etc/default/grub
         regexp: '^GRUB_TIMEOUT=.*'
         line: 'GRUB_TIMEOUT=1'
+      register: taskresults
 
     - name: Boot | Grub | Update Grub
-      shell: update-grub
+      command: update-grub
+      when: "taskresults is not skipped"
 
 # do not autologin user on hyper-v as it messes up the enhanced session
 - name: Boot | Autologin | Configure Autologin

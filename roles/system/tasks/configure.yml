@@ -1,2 +1,0 @@
-- name: Configure | Update locate database
-  shell: updatedb

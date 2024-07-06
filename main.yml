@@ -1,25 +1,29 @@
 - name: "Kali linux setup"
   hosts: all
   roles:
-    - role: tools
     - role: system
       become: true
     - role: xfce
       when: ansible_env.XDG_CURRENT_DESKTOP == "XFCE"
     - role: user
+    - role: tools
           
   tasks:
-    - block:
-        - name: System | Apt | Upgrade Packages
-          ansible.builtin.apt:
-            upgrade: safe
+    # - block:
+    #     - name: System | Apt | Upgrade Packages
+    #       ansible.builtin.apt:
+    #         upgrade: safe
 
-        - name: System | Apt | Autoclean and Autoremove
-          ansible.builtin.apt:
-            autoclean: yes
-            autoremove: yes
+    #     - name: System | Apt | Autoclean and Autoremove
+    #       ansible.builtin.apt:
+    #         autoclean: yes
+    #         autoremove: yes
+    #   become: true
+
+    #   rescue:
+    #     - debug:
+    #         msg: "Apt upgrade failed"
+
+    - name: System | Update locate database
+      shell: updatedb
       become: true
-
-      rescue:
-        - debug:
-            msg: "Apt upgrade failed"

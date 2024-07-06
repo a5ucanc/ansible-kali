@@ -1,9 +1,3 @@
-- name: Alacritty | Install Packages
-  ansible.builtin.apt:
-    name: alacritty
-    state: present
-  become: true
-    
 - name: Alacritty | Configure
   block:
     - name: Alacritty | Configure | Default Terminal

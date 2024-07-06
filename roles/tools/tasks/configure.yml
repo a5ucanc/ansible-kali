@@ -1,0 +1,13 @@
+- name: Configure | NetExec Auto Logging
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.nxc/nxc.conf"
+    regexp: '^log_mode = False'
+    line: 'log_mode = True'
+  when: "'netexec' in apt_packages"
+
+- name: Confiure | Add User To Docker Group
+  ansible.builtin.user:
+    name: "{{ ansible_env.USER }}"
+    groups: 'docker'
+    append: true
+  when: "'docker.io' in apt_packages"

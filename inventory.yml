@@ -3,22 +3,26 @@ all:
     localhost:
       ansible_connection: local
   vars:
+    burpsuite: true
+    burpsuite_folder: /opt/burpsuite
     apt_packages:
       - bloodhound
+      - pspy
+      - peass
+      - chisel
+      - netexec
+      - seclists
+      - golang-go
+      - docker.io
+      - openfortivpn
+      - alacritty
     pip_packages:
+      - pwntools
+    repos_dir: "{{ ansible_env.HOME }}/tools"
     repos:
-      - GhostPack/Certify
-      - ticarpi/jwt_tool
-      - Hex27/mongomap
       - Greenwolf/ntlm_theft
       - AlmondOffSec/PassTheCert
       - urbanadventurer/username-anarchy
-      - vi/websocat
-    releases:
-      - jpillora/chisel
-      - carlospolop/PEASS-ng
-      - ropnop/kerbrute
-      - elddy/NimScan
-      - DominicBreuker/pspy
     path_dirs:
       - .local/bin
+      - go/bin

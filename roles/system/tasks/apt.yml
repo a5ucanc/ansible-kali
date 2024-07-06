@@ -6,5 +6,5 @@
   ansible.builtin.apt:
     name: '{{ apt_packages }}'
     state: present
-  when: apt_packages is defined
+  when: apt_packages | length > 0
 

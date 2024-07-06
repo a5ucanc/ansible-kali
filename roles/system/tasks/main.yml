@@ -5,9 +5,3 @@
 
 - name: System | Import Tasks | Boot
   include_tasks: boot.yml
-
-- name: System | Import Tasks | Configure
-  include_tasks: configure.yml
-  
-- name: System | Import Tasks | Evil-WinRM
-  include_tasks: ruby.yml

@@ -1,15 +1,26 @@
 ---
-  - name: Home | Copy Files
+  - name: Home | Dotfiles | Copy Dotfiles To Home
     copy:
-      src: 'files/home/'
+      src: 'dotfiles/'
       dest: '{{ ansible_env.HOME }}/'
       mode: 0755
+
+  - name: Home | Dotfiles | Install Dotfiles
+    command: "/bin/bash {{ ansible_env.HOME }}/install.sh"
+    args:
+      chdir: "{{ ansible_env.HOME }}"
+
+  - name: Home | Dotfiles| Cleanup
+    block:
+      - ansible.builtin.file:
+          path: "{{ ansible_env.HOME }}/install.sh"
+          state: absent
+      - ansible.builtin.file:
+          path: "{{ ansible_env.HOME }}/.gitmodules"
+          state: absent
 
   - name: Home | Add To PATH
     lineinfile:
       path: "{{ ansible_env.HOME }}/.zshrc"
-      line: 'export PATH=$PATH:$HOME/{{ item }}'
-      create: yes
-    loop: "{{ path_dirs }}"
-    
-    
+      line: 'export PATH=$PATH:{{ path_dirs | join(":$HOME/") }}'
+      create: no

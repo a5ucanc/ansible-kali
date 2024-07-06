@@ -1,38 +1,37 @@
 ---
 # tasks file for tools
-- name: Tools | Create Releases Directory
-  file:
-    path: "{{ releases_dir }}"
-    state: directory
-    mode: 0755
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
-  become: true
+- name: Tools | Repos
+  block:
+    - name: Tools | Repos | Create Directory
+      file:
+        path: "{{ repos_dir }}"
+        state: directory
+        mode: 0755
+        owner: "{{ ansible_env.USER }}"
+        group: "{{ ansible_env.USER }}"
+      become: true
+    
+    - name: Tools | Import Tasks | Repos
+      import_tasks: repos.yml
+  when: repos | length > 0
 
-- name: Tools | Import Tasks | Releases
-  include_tasks: releases.yml
-  loop: "{{ releases | default([], true)}}"
+- name: Tools | Burpsuite
+  block:
+    - name: Tools | Burpsuite | Create Directory
+      ansible.builtin.file:
+        path: "{{ burpsuite_folder }}"
+        state: directory
+        mode: 0755
+        owner: "{{ ansible_env.USER  }}"
+        group: "{{ ansible_env.USER }}"
+      become: true
+    
+    - name: Tools | Import Tasks | Burpsuite
+      import_tasks: burpsuite.yml
+  when: burpsuite
 
-- name: Tools | Create Repos Directory
-  file:
-    path: "{{ repos_dir }}"
-    state: directory
-    mode: 0755
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
-  become: true
-
-- name: Tools | Import Tasks | Repos
-  import_tasks: repos.yml
-
-- name: Burpsuite | Create Directory
-  ansible.builtin.file:
-    path: "{{ burpsuite_folder }}"
-    state: directory
-    mode: 0755
-    owner: "{{ ansible_env.USER  }}"
-    group: "{{ ansible_env.USER }}"
-  become: true
-
-- name: Tools | Import Tasks | Burpsuite
-  import_tasks: burpsuite.yml
+- name: Tools | Import Tasks | Evil-WinRM
+  include_tasks: ruby.yml
+  args:
+    apply:
+      become: yes

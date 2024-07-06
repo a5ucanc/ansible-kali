@@ -4,4 +4,5 @@
   include_tasks: clipman.yml
 - name: Xfce | Import Tasks | Alacritty
   include_tasks: alacritty.yml
+  when: "'alacritty' in apt_packages"
   
