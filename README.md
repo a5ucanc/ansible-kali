@@ -8,7 +8,7 @@ Automate configuration and customization of stock Kali image with Ansible
 
 Clone this repository and install ansible.
 ```shell
-git clone https://github.com/a5ucanc/ansible-kali
+git clone --recurse-submodules https://github.com/a5ucanc/ansible-kali
 sudo apt update
 sudo apt install ansible 
 ```
