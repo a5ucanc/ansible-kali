@@ -12,7 +12,7 @@
       become: true
     
     - name: Tools | Import Tasks | Repos
-      import_tasks: repos.yml
+      include_tasks: repos.yml
   when: repos | length > 0
 
 - name: Tools | Burpsuite
@@ -27,7 +27,7 @@
       become: true
     
     - name: Tools | Import Tasks | Burpsuite
-      import_tasks: burpsuite.yml
+      include_tasks: burpsuite.yml
   when: burpsuite
 
 - name: Tools | Import Tasks | Evil-WinRM
